@@ -162,7 +162,7 @@ jobs:
   create-release:
     needs: [build-windows, build-macos-arm64, build-linux, build-macos-intel]
     runs-on: ubuntu-22.04
-    if: startsWith(github.ref, 'refs/tags/')
+    if: startsWith(github.ref, 'refs/tags/') || github.event_name == 'workflow_dispatch'
     
     steps:
       - name: Download all artifacts
